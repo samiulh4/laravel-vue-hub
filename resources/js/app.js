@@ -8,6 +8,17 @@ import './bootstrap.js';
 import { createApp } from 'vue';
 import router from './router/index.js';
 
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+
+
+//import '@fortawesome/fontawesome-free/css/all.css';
+library.add(fas, far, fab)
+//dom.watch();
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -39,4 +50,4 @@ app.use(router);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#root');
+app.component("font-awesome-icon", FontAwesomeIcon).mount('#root');

@@ -54,3 +54,17 @@ npm install --save-dev webpack@latest webpack-cli@latest
 npm install
 npm install --save-dev laravel-mix@latest
 npm run dev
+
+
+
+font awsome
+npm i --save @fortawesome/fontawesome-svg-core
+# Free icons styles
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/vue-fontawesome@latest-3
+
+
+https://www.youtube.com/watch?v=5lVQgZzLMHc
+https://www.youtube.com/watch?v=cfiN8lCA3RM

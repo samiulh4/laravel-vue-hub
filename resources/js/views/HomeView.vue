@@ -1,14 +1,26 @@
 <template>
-    <div class="home">
-      <h1>Artificial intelligence is a capability of computer science</h1>
-      <p>কৃত্রিম বুদ্ধিমত্তা হলো কম্পিউটার বিজ্ঞানের একটি শাখা (Default) Artificial intelligence is a capability of computer science</p>
-      <p style="font-family: 'Siyamrupali';">কৃত্রিম বুদ্ধিমত্তা হলো কম্পিউটার বিজ্ঞানের একটি শাখা (Siyamrupali) Artificial intelligence is a capability of computer science</p>
-      <p style="font-family: 'Siyamrupali';">কৃত্রিম বুদ্ধিমত্তা হলো কম্পিউটার বিজ্ঞানের একটি শাখা (Siyamrupali) Artificial intelligence is a capability of computer science</p>
-      <p style="font-family: 'Siyamrupali';">কৃত্রিম বুদ্ধিমত্তা হলো কম্পিউটার বিজ্ঞানের একটি শাখা (Siyamrupali) Artificial intelligence is a capability of computer science</p>
+  <div class="home_view">
+    <Topbar />
+    <Navbar />
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
     </div>
-  </template>
-  <script>
-  export default {
-     // Your component logic goes here
-  }
-  </script>
+    <Footer />
+  </div>
+</template>
+<script>
+import Footer from '../components/partials/Footer.vue';
+import Navbar from '../components/partials/Navbar.vue';
+import Topbar from '../components/partials/Topbar.vue';
+
+
+export default {
+  components: { Topbar, Navbar, Footer }
+};
+</script>
