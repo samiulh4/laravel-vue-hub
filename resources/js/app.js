@@ -7,6 +7,7 @@
 import './bootstrap.js';
 import { createApp } from 'vue';
 import router from './router/index.js';
+import store from './store/index.js';
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
@@ -31,6 +32,7 @@ import AppComponent from './components/AppComponent.vue';
 app.component('app-component', AppComponent);
 
 app.use(router);
+app.use(store);
 
 /**
  * The following block of code may be used to automatically register your
