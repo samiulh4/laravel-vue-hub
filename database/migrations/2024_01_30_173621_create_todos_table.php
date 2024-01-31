@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->string('unique_id', 15);
             $table->string('title', 255);
             $table->text('description')->nullable();
             $table->date('due_date')->nullable();
