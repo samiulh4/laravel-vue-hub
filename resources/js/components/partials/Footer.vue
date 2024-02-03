@@ -35,5 +35,11 @@
     bottom: 0;
     left: 0;
     right: 0;
+    height: 80px;
 }
+.border-top{
+    border-color: #41b883 !important;
+}
+
+
 </style>

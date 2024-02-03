@@ -68,3 +68,5 @@ npm i --save @fortawesome/vue-fontawesome@latest-3
 
 https://www.youtube.com/watch?v=5lVQgZzLMHc
 https://www.youtube.com/watch?v=cfiN8lCA3RM
+(login)
+https://www.youtube.com/watch?v=NlD4Sy4Talo

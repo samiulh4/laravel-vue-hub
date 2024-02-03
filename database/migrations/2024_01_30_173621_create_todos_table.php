@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->text('description')->nullable();
             $table->date('due_date')->nullable();
-            $table->tinyInteger('status_id')->default(0);
+            $table->tinyInteger('is_completed')->default(0);
             $table->bigInteger('created_by')->unsigned()->nullable();
             $table->bigInteger('updated_by')->unsigned()->nullable();
             $table->timestamps();
