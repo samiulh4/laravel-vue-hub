@@ -20,7 +20,7 @@
                             {{ getAuthUser.name }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><router-link class="dropdown-item" :to="{ name: 'UserProfileView' }">Profile</router-link></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
