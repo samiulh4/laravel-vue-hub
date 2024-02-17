@@ -5,6 +5,7 @@ namespace App\Modules\Authentication\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Modules\User\Models\Users;
 
 class AuthenticationController extends Controller
 {
@@ -24,4 +25,20 @@ class AuthenticationController extends Controller
         }
     } // end -:- authCheck()
 
+    public function authWebUpdateUser(Request $request)
+    {
+        $validated = $request->validate([
+            'gender_code' => 'required',
+            'country_code' => 'required',
+        ]);
+
+        $authUserEmail = Auth::user()->email;
+        $user = Users::where('email', $authUserEmail)->first();
+        $user->bio = $request->bio;
+        $user->save();
+        return response()->json([
+            'message' => 'User Profile Data Update Successfully.',
+            'data' => $user,
+        ], 200);
+    }// end -:- updateAuthUser()
 } // end -:- AuthenticationController
