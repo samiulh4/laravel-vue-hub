@@ -17,13 +17,22 @@ const mutations = {
 const actions = {
     async authCheck({ commit }) {
         try {
-            const response = await axios.get('/auth/check');
+            const response = await axios.get('/authentication/check');
             commit('setAuthenticationStatus', response.data.is_authenticated);
             commit('setUser', response.data.data);
         } catch (error) {
-            console.error('Error during authentication check:', error);
+            console.error('Error during authentication check [AUTH_STORE]: ', error);
             commit('setAuthenticationStatus', false);
             commit('setUser', {});
+        }
+    },
+    async authSignOut({ commit }) {
+        try {
+            const response = await axios.get('/authentication/sign-out');
+            commit('setAuthenticationStatus', false);
+            commit('setUser', {});
+        } catch (error) {
+            console.error('Error during authentication sign out : [AUTH_STORE]', error);
         }
     }
 };

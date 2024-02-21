@@ -48,9 +48,9 @@
                             <input class="form-control" type="file" v-on:change="onAvatarChange"/>
                         </div>
                         <div class="col-md-6">
-                            <img class="user_thumbnail"
+                            <img class="img-thumbnail rounded user_thumbnail"
                                  :src="avatarPreview"
-                                 alt="..."/>
+                                 alt="..." @error="handleAvatarError"/>
                         </div>
                     </div>
                 </div>
@@ -62,6 +62,7 @@
 <script>
 import axios from "axios";
 import defaultUser from "../../images/default-user.png";
+import imageNotFound from "../../images/image-not-found.webp";
 export default {
     data() {
         return {
@@ -75,6 +76,9 @@ export default {
         }
     },
     methods: {
+        handleAvatarError(e) {
+            e.target.src = imageNotFound;
+        },
         onAvatarChange(e) {
             this.avatar = e.target.files[0];
             const reader = new FileReader();
@@ -90,7 +94,7 @@ export default {
         async getAuthUserData() {
             try {
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-                const response = await axios.get('/auth/check');
+                const response = await axios.get('/authentication/check');
                 if(response.status === 200){
                     this.name = response.data.data.name;
                     this.email = response.data.data.email;
@@ -100,7 +104,7 @@ export default {
                     this.avatarPreview = response.data.data.avatar;
                 }
             } catch (error) {
-                alert('Error during authentication check:');
+                alert('Error during authentication check : '+error.message);
             }
         },
         async handleSubmit(e)
@@ -113,7 +117,7 @@ export default {
             form.append('bio', this.bio);
             form.append('avatar', this.avatar);
             try {
-                const response = await axios.post('/auth/web/update-auth-user', form);
+                const response = await axios.post('/authentication/web/update-auth-user', form);
                 if(response.data.success === true){
                     this.avatarPreview = response.data.data.avatar;
                 }

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('auth/check', 'AuthenticationController@authCheck');
+Route::get('authentication/check', 'AuthenticationController@authCheck');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::post('auth/web/update-auth-user', 'AuthenticationController@authWebUpdateUser');
+    Route::post('authentication/web/update-auth-user', 'AuthenticationController@authWebUpdateUser');
+    Route::get('authentication/sign-out', 'AuthenticationController@signOut');
 });

@@ -73,4 +73,15 @@ class AuthenticationController extends Controller
             ], 500);
         }
     }// end -:- updateAuthUser()
+    public function signOut(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'User sign out successfully.',
+        ], 200);
+    }// end -:- SignOut()
 } // end -:- AuthenticationController
