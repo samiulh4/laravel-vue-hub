@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Modules\User\Models\Users;
+use Illuminate\Support\Str;
 
 class AuthenticationController extends Controller
 {
@@ -36,11 +37,15 @@ class AuthenticationController extends Controller
             $authUserEmail = Auth::user()->email;
             $user = Users::where('email', $authUserEmail)->first();
 
+            $uniqueId = time();
+            $uniqueString = $uniqueId.Str::random(5, 'alpha');
+
             $user->name = $request->name;
             $user->gender_code = $request->gender_code;
             $user->country_code = $request->country_code;
             $user->bio = $request->bio;
             $user->updated_by = Auth::user()->id;
+            $user->unique_id = $uniqueString;
 
             if ($request->hasFile('avatar')) {
                 $avatar = $request->file('avatar');
@@ -53,7 +58,7 @@ class AuthenticationController extends Controller
                 if ($avatar->move(public_path($avatar_path), $avatar_name)) {
                     $oldAvatar =  $user->avatar;
                     $user->avatar = $avatar_db_url;
-                    if (file_exists(public_path($oldAvatar))) {
+                    if (is_file(public_path($oldAvatar))) {
                         unlink(public_path($oldAvatar));
                     }
                 }

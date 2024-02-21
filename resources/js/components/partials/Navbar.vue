@@ -4,7 +4,7 @@
             <nav class="nav nav-underline justify-content-between">
                 <router-link class="nav-item nav-link link-body-emphasis" :to="{ name: 'HomeView'}">Home</router-link>
                 <router-link class="nav-item nav-link link-body-emphasis" :to="{ name: 'TodoView'}">Todo</router-link>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
+                <router-link class="nav-item nav-link link-body-emphasis" :to="{ name:'BlogView' }">Blog</router-link>
                 <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
                 <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
                 <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
