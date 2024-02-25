@@ -1,7 +1,7 @@
 <template>
     <div class="blog_view">
-        <Topbar />
-        <Navbar />
+<!--        <Topbar />-->
+<!--        <Navbar />-->
         <main class="container">
             <div class="row pb-3">
                 <div class="col-md-12">
@@ -50,27 +50,42 @@
 
 
         </main>
-        <BlogFooter/>
+<!--        <BlogFooter/>-->
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block">
+    <!-- start -:- Modal -->
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-labelledby="blogModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <form>
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="blogModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-label">Title</label>
+                            <input type="email" class="form-control" />
+                            <div class="form-text"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+    <!-- end -:- Modal -->
 </template>
 <script>
 import Topbar from '../components/partials/Topbar.vue';
@@ -83,11 +98,19 @@ export default {
     components: { Navbar, BlogFooter, Topbar },
     methods:{
         createModal(){
-            //let myModal = document.getElementById('exampleModal');
+            let blogModal = document.getElementById('blogModal');
+            blogModal.classList.add('show');
+            blogModal.style.display = 'block';
 
             // Show the modal
             //myModal.show();
             //$('#exampleModal').modal('show');
+        },
+        closeModal()
+        {
+            let blogModal = document.getElementById('blogModal');
+            blogModal.classList.remove('show');
+            blogModal.style.display = 'none';
         }
     }
 };

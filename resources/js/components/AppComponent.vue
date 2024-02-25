@@ -1,26 +1,32 @@
 <template>
-  <div class="app_wrapper">
-    <router-view />
-  </div>
+    <div class="app_wrapper">
+        <component :is="layout">
+            <router-view />
+        </component>
+    </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+
 
 export default {
+    data() {
+        return {
+            layout: null
+        };
+    },
     methods: {
-        ...mapActions('authUser', ['authCheck']),
+        setLayout() {
+            const route = this.$route;
+            if (route.meta.requiresAuth) {
+                this.layout = 'AdminLayout';
+            } else {
+                this.layout = 'WebLayout';
+            }
+        }
     },
     created() {
-        this.authCheck();
+        this.setLayout();
     }
 };
 </script>
-<style>
-body{
-  background: #e8f7f0;
-}
-.app_wrapper{
-  display: block;
-  position: relative;
-}
-</style>
+
