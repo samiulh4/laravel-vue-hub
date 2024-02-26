@@ -32,13 +32,24 @@
                             <option value="BGD">Bangladesh</option>
                             <option value="PAK">Pakistan</option>
                             <option value="IND">India</option>
+                            <option value="USA">USA</option>
                         </select>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label class="form-label">Bio</label>
-                        <textarea class="form-control" rows="3" v-model="bio"></textarea>
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-label">Mobile No.</label>
+                            <input type="text" class="form-control" placeholder="Enter mobile no." v-model="mobile_no"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="form-label">Bio</label>
+                            <textarea class="form-control" rows="3" v-model="bio"></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="mt-3">
@@ -54,7 +65,9 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-sm btn-success mt-3">Submit</button>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-success mt-3 float-end">Update</button>
             </div>
         </div>
     </form>
@@ -72,6 +85,7 @@ export default {
             country_code: null,
             bio: null,
             avatar: null,
+            mobile_no: null,
             avatarPreview: defaultUser,
         }
     },
@@ -101,6 +115,7 @@ export default {
                     this.gender_code = response.data.data.gender_code;
                     this.country_code = response.data.data.country_code;
                     this.bio = response.data.data.bio;
+                    this.mobile_no = response.data.data.mobile_no;
                     this.avatarPreview = response.data.data.avatar;
                 }
             } catch (error) {
@@ -115,6 +130,7 @@ export default {
             form.append('gender_code', this.gender_code);
             form.append('country_code', this.country_code);
             form.append('bio', this.bio);
+            form.append('mobile_no', this.mobile_no);
             form.append('avatar', this.avatar);
             try {
                 const response = await axios.post('/authentication/web/update-auth-user', form);

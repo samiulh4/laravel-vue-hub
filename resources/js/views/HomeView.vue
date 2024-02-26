@@ -1,8 +1,5 @@
 <template>
   <div class="home_view">
-    <Topbar />
-    <Navbar />
-    <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -16,19 +13,12 @@
             </div>
         </div>
     </div>
-    <Footer />
-  </div>
 </template>
 <script>
-import Footer from '../components/partials/Footer.vue';
-import Navbar from '../components/partials/Navbar.vue';
-import Topbar from '../components/partials/Topbar.vue';
 import BannerImage from "../images/banner.webp";
 
-
-
 export default {
-  components: { Topbar, Navbar, Footer },
+    name: "HomeView",
     data(){
       return{
           bannerImg:BannerImage
@@ -38,7 +28,6 @@ export default {
 </script>
 <style scoped>
 .banner_image{
-
     width:100%;
     height: calc(100vh - 18rem); /* Adjust according to your header and footer heights */
 }

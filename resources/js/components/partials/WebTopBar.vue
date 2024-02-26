@@ -14,7 +14,7 @@
                     <router-link class="link-secondary" to="#" aria-label="Search">
                         <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="mx-3"/>
                     </router-link>
-                    <a class="btn btn-sm btn-outline-secondary" href="/login" v-if="!getAuthStatus">Sign In</a>
+                    <router-link class="btn btn-sm btn-outline-secondary" :to="{ name: 'SignInView'}" v-if="!getAuthStatus">Sign In</router-link>
                     <a class="btn btn-sm btn-outline-secondary" href="/register" v-if="!getAuthStatus">Sign Up</a>
                     <img :src="getAuthUser.avatar" alt="..." class="mx-3 top_bar_user" @error="handleAvatarError"
                          v-if="getAuthStatus"/>
