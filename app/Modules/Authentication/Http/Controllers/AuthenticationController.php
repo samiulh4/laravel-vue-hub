@@ -18,7 +18,7 @@ class AuthenticationController extends Controller
             $user = Auth::user();
             return response()->json([
                 'is_authenticated' => true,
-                'data' => $user,
+                'user' => $user,
             ], 200);
         } else {
             return response()->json([
@@ -44,6 +44,7 @@ class AuthenticationController extends Controller
             $user->gender_code = $request->gender_code;
             $user->country_code = $request->country_code;
             $user->bio = $request->bio;
+            $user->mobile_no = $request->mobile_no;
             $user->updated_by = Auth::user()->id;
             $user->unique_id = $uniqueString;
 
@@ -89,4 +90,34 @@ class AuthenticationController extends Controller
             'message' => 'User sign out successfully.',
         ], 200);
     }// end -:- SignOut()
+    public function webSignInSubmit(Request $request){
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        try {
+            if(Auth::attempt($credentials))
+            {
+                $request->session()->regenerate();
+                return response()->json([
+                    'success' => true,
+                    'is_authenticated' => true,
+                    'user' => Auth::user(),
+                    'message' => 'You have successfully sign in.',
+                ], 200);
+            }else{
+                return response()->json([
+                    'success' => false,
+                    'is_authenticated' => false,
+                    'message' => 'Your provided credentials do not match in our records !',
+                ], 401);
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'is_authenticated' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }// end -:- webSignInSubmit()
 } // end -:- AuthenticationController

@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=iFOEU6YNBzw&t=1339s
+
+01. php artisan make:module RideApp
+
+php artisan make:notification LoginNeedsNotification

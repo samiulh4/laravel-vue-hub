@@ -19,11 +19,24 @@ const actions = {
         try {
             const response = await axios.get('/authentication/check');
             commit('setAuthenticationStatus', response.data.is_authenticated);
-            commit('setUser', response.data.data);
+            commit('setUser', response.data.user);
         } catch (error) {
             console.error('Error during authentication check [AUTH_STORE]: ', error);
             commit('setAuthenticationStatus', false);
             commit('setUser', {});
+        }
+    },
+    async authSignIn({commit}, userData){
+        try{
+            const response = await axios.post('/authentication/web/sign-in',userData);
+            console.log(response);
+            if(response.data.is_authenticated === true){
+                //await commit('authCheck');
+                commit('setAuthenticationStatus', response.data.is_authenticated);
+                commit('setUser', response.data.user);
+            }
+        } catch (error){
+            console.error('Error during authentication sign in [AUTH_STORE]: ', error);
         }
     },
     async authSignOut({ commit }) {
