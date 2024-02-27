@@ -29,7 +29,7 @@ export default {
         ...mapActions('authUser', ['authCheck']),
     },
     created() {
-        this.authCheck();
+         this.authCheck();
     }
 };
 </script>

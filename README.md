@@ -65,8 +65,44 @@ npm i --save @fortawesome/free-regular-svg-icons
 npm i --save @fortawesome/free-brands-svg-icons
 npm i --save @fortawesome/vue-fontawesome@latest-3
 
-
+"""
 https://www.youtube.com/watch?v=5lVQgZzLMHc
+"""
+
+"""
 https://www.youtube.com/watch?v=cfiN8lCA3RM
+"""
+
 (login)
+
+"""
 https://www.youtube.com/watch?v=NlD4Sy4Talo
+"""
+
+
+
+### Working with the Vue.js Router Guards
+
+"""
+https://reintech.io/blog/working-with-vuejs-router-guards
+"""
+
+"""
+https://router.vuejs.org/guide/advanced/navigation-guards.html
+"""
+
+"""
+https://www.koderhq.com/tutorial/vue/route-guard/#google_vignette
+"""
+
+### Authentication and Authorization Implementation with Vue.js
+
+"""
+https://medium.com/@tahnyybelguith/authentication-and-authorization-implementation-with-vue-js-6afcbb821c85
+"""
+
+### Authentication In Vue.js
+
+"""
+https://www.smashingmagazine.com/2020/10/authentication-in-vue-js/
+"""

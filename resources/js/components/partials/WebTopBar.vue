@@ -57,7 +57,7 @@ export default {
         signOut() {
             this.authSignOut();
             alert('Sign out successfully.');
-            this.$router.push({ name: 'HomeView' });
+            this.$router.push({ name: 'SignInView' });
         }
     },
     computed: mapGetters('authUser', ['getAuthUser', 'getAuthStatus'])
