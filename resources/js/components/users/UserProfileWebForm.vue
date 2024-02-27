@@ -110,13 +110,13 @@ export default {
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
                 const response = await axios.get('/authentication/check');
                 if(response.status === 200){
-                    this.name = response.data.data.name;
-                    this.email = response.data.data.email;
-                    this.gender_code = response.data.data.gender_code;
-                    this.country_code = response.data.data.country_code;
-                    this.bio = response.data.data.bio;
-                    this.mobile_no = response.data.data.mobile_no;
-                    this.avatarPreview = response.data.data.avatar;
+                    this.name = response.data.user.name;
+                    this.email = response.data.user.email;
+                    this.gender_code = response.data.user.gender_code;
+                    this.country_code = response.data.user.country_code;
+                    this.bio = response.data.user.bio;
+                    this.mobile_no = response.data.user.mobile_no;
+                    this.avatarPreview = response.data.user.avatar;
                 }
             } catch (error) {
                 alert('Error during authentication check : '+error.message);

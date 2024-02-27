@@ -22364,7 +22364,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       this.authSignOut();
       alert('Sign out successfully.');
       this.$router.push({
-        name: 'HomeView'
+        name: 'SignInView'
       });
     }
   }),
@@ -22532,13 +22532,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 4:
               response = _context.sent;
               if (response.status === 200) {
-                _this2.name = response.data.data.name;
-                _this2.email = response.data.data.email;
-                _this2.gender_code = response.data.data.gender_code;
-                _this2.country_code = response.data.data.country_code;
-                _this2.bio = response.data.data.bio;
-                _this2.mobile_no = response.data.data.mobile_no;
-                _this2.avatarPreview = response.data.data.avatar;
+                _this2.name = response.data.user.name;
+                _this2.email = response.data.user.email;
+                _this2.gender_code = response.data.user.gender_code;
+                _this2.country_code = response.data.user.country_code;
+                _this2.bio = response.data.user.bio;
+                _this2.mobile_no = response.data.user.mobile_no;
+                _this2.avatarPreview = response.data.user.avatar;
               }
               _context.next = 11;
               break;
@@ -22696,7 +22696,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       this.password = null;
       alert('Sign in successfully.');
       this.$router.push({
-        name: 'HomeView'
+        name: 'UserProfileView'
       });
     }
   })
@@ -61364,13 +61364,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _views_HomeView_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/HomeView.vue */ "./resources/js/views/HomeView.vue");
 /* harmony import */ var _views_AboutView_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/AboutView.vue */ "./resources/js/views/AboutView.vue");
 /* harmony import */ var _views_TodoView_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/TodoView.vue */ "./resources/js/views/TodoView.vue");
 /* harmony import */ var _views_UserProfileView_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/UserProfileView.vue */ "./resources/js/views/UserProfileView.vue");
 /* harmony import */ var _views_BlogView_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/BlogView.vue */ "./resources/js/views/BlogView.vue");
 /* harmony import */ var _views_SignInView_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/SignInView.vue */ "./resources/js/views/SignInView.vue");
+/* harmony import */ var _store_index_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store/index.js */ "./resources/js/store/index.js");
 
 
 
@@ -61379,6 +61380,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import AdminLayout from "../views/AdminLayout.vue";
+
 
 var routes = [{
   path: '/',
@@ -61400,19 +61402,32 @@ var routes = [{
   name: 'TodoView',
   component: _views_TodoView_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
-  path: '/vue/user/profile',
-  name: 'UserProfileView',
-  component: _views_UserProfileView_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
-}, {
   path: '/vue/blog',
   name: 'BlogView',
   component: _views_BlogView_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
+  path: '/vue/auth/profile',
+  name: 'UserProfileView',
+  component: _views_UserProfileView_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+  meta: {
+    requiresAuth: true
+  }
 }
 // {path: '/vue/admin', name: 'AdminLayout', component: AdminLayout, meta: {layout: 'AdminLayout'}},
 ];
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createWebHistory)(),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.createWebHistory)(),
   routes: routes
+});
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(function (record) {
+    return record.meta.requiresAuth;
+  })) {
+    //store.dispatch('authUser/authCheck');
+    var isAuthenticated = _store_index_js__WEBPACK_IMPORTED_MODULE_6__["default"].getters['authUser/getAuthStatus'];
+    console.log('isAuthenticated', isAuthenticated);
+  } else {}
+  next();
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 

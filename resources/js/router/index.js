@@ -7,14 +7,16 @@ import BlogView from "../views/BlogView.vue";
 import SignInView from "../views/SignInView.vue";
 // import AdminLayout from "../views/AdminLayout.vue";
 
+import store from "../store/index.js";
+
 
 const routes = [
     {path: '/', name: 'HomeView', component: HomeView},
     {path: '/vue/sign-in', name: 'SignInView', component: SignInView, meta:{layout: 'OtherLayout'}},
     {path: '/vue/about', name: 'AboutView', component: AboutView},
     {path: '/vue/todo', name: 'TodoView', component: TodoView},
-    {path: '/vue/user/profile', name: 'UserProfileView', component: UserProfileView},
     {path: '/vue/blog', name: 'BlogView', component: BlogView},
+    {path: '/vue/auth/profile', name: 'UserProfileView', component: UserProfileView, meta: { requiresAuth: true }},
     // {path: '/vue/admin', name: 'AdminLayout', component: AdminLayout, meta: {layout: 'AdminLayout'}},
 ];
 
@@ -23,4 +25,14 @@ const router = createRouter({
     routes,
 });
 
+router.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+        //store.dispatch('authUser/authCheck');
+        const isAuthenticated = store.getters['authUser/getAuthStatus'];
+        console.log('isAuthenticated',isAuthenticated);
+    } else {
+
+    }
+    next();
+});
 export default router;

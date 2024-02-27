@@ -47,7 +47,7 @@ export default {
             this.email = null;
             this.password = null;
             alert('Sign in successfully.');
-            this.$router.push({ name: 'HomeView' });
+            this.$router.push({ name: 'UserProfileView' });
         }
     }
 };
