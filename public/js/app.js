@@ -61423,9 +61423,20 @@ router.beforeEach(function (to, from, next) {
   if (to.matched.some(function (record) {
     return record.meta.requiresAuth;
   })) {
-    //store.dispatch('authUser/authCheck');
-    var isAuthenticated = _store_index_js__WEBPACK_IMPORTED_MODULE_6__["default"].getters['authUser/getAuthStatus'];
-    console.log('isAuthenticated', isAuthenticated);
+    console.log("Dispatching authCheck action...");
+    _store_index_js__WEBPACK_IMPORTED_MODULE_6__["default"].dispatch('authUser/authCheck').then(function () {
+      var isAuthenticated = _store_index_js__WEBPACK_IMPORTED_MODULE_6__["default"].getters['authUser/getAuthStatus'];
+      console.log('Authentication status after dispatching authCheck:', isAuthenticated);
+      if (!isAuthenticated) {
+        // Redirect the user to the login page or handle unauthorized access
+        //next('/login');
+      } else {
+        //next();
+      }
+    })["catch"](function (error) {
+      console.error('Error while dispatching authCheck action:', error);
+      //next(false); // Prevent navigation
+    });
   } else {}
   next();
 });
