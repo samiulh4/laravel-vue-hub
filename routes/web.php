@@ -17,4 +17,7 @@ Auth::routes();
 // Vue Js Route
 Route::get('/', [App\Http\Controllers\VueController::class, 'index'])->name('vue.index');
 Route::get('/vue/{any?}', [App\Http\Controllers\VueController::class, 'index'])->where('any', '(.*)');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Redis
+Route::get('/redis', [App\Http\Controllers\RedisController::class, 'testRedis']);

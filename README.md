@@ -106,3 +106,10 @@ https://medium.com/@tahnyybelguith/authentication-and-authorization-implementati
 """
 https://www.smashingmagazine.com/2020/10/authentication-in-vue-js/
 """
+
+
+"""
+php artisan db:seed
+php artisan db:seed -–class=UserSeeder
+php artisan migrate:fresh --seed
+"""

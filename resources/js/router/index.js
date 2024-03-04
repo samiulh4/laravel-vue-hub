@@ -27,9 +27,20 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     if(to.matched.some(record => record.meta.requiresAuth)) {
-        //store.dispatch('authUser/authCheck');
-        const isAuthenticated = store.getters['authUser/getAuthStatus'];
-        console.log('isAuthenticated',isAuthenticated);
+        console.log("Dispatching authCheck action...");
+        store.dispatch('authUser/authCheck').then(() => {
+            const isAuthenticated = store.getters['authUser/getAuthStatus'];
+            console.log('Authentication status after dispatching authCheck:', isAuthenticated);
+            if (!isAuthenticated) {
+                // Redirect the user to the login page or handle unauthorized access
+                //next('/login');
+            } else {
+                //next();
+            }
+        }).catch(error => {
+            console.error('Error while dispatching authCheck action:', error);
+            //next(false); // Prevent navigation
+        });
     } else {
 
     }
