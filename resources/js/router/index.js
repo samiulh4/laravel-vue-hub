@@ -6,6 +6,7 @@ import UserProfileView from '../views/UserProfileView.vue';
 import BlogView from "../views/BlogView.vue";
 import SignInView from "../views/SignInView.vue";
 // import AdminLayout from "../views/AdminLayout.vue";
+import ApacheEChartView from "../views/ApacheEChartView.vue";
 
 import store from "../store/index.js";
 
@@ -17,6 +18,7 @@ const routes = [
     {path: '/vue/todo', name: 'TodoView', component: TodoView},
     {path: '/vue/blog', name: 'BlogView', component: BlogView},
     {path: '/vue/auth/profile', name: 'UserProfileView', component: UserProfileView, meta: { requiresAuth: true }},
+    {path: '/vue/apache/e-chart', name: 'ApacheEChartView', component: ApacheEChartView},
     // {path: '/vue/admin', name: 'AdminLayout', component: AdminLayout, meta: {layout: 'AdminLayout'}},
 ];
 
