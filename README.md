@@ -113,3 +113,8 @@ php artisan db:seed
 php artisan db:seed -–class=UserSeeder
 php artisan migrate:fresh --seed
 """
+
+npm install echarts vue-echarts
+"""
+https://www.freecodecamp.org/news/how-to-add-charts-and-graphs-to-a-vue-js-application-29f943a45d09/
+"""

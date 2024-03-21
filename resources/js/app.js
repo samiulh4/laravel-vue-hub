@@ -14,11 +14,20 @@ import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-
-
 //import '@fortawesome/fontawesome-free/css/all.css';
 library.add(fas, far, fab)
 //dom.watch();
+
+import ECharts from 'vue-echarts';
+import 'echarts/lib/chart/bar';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/legend';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/grid';
+import 'echarts/lib/component/toolbox';
+import 'echarts/lib/chart/line';
+import 'echarts/lib/chart/pie';
+
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -33,6 +42,8 @@ app.component('app-component', AppComponent);
 
 app.use(router);
 app.use(store);
+app.component("font-awesome-icon", FontAwesomeIcon);
+app.component("chart", ECharts);
 
 /**
  * The following block of code may be used to automatically register your
@@ -52,4 +63,5 @@ app.use(store);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.component("font-awesome-icon", FontAwesomeIcon).mount('#root');
+//app.component("font-awesome-icon", FontAwesomeIcon).mount('#root');
+app.mount('#root');
